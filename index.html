@@ -1,235 +1,309 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio de Mansour Gueye – Gi.Code Formation</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" href="https://i.ibb.co/27xRzqTQ/logo.png">
+  <script src="https://kit.fontawesome.com/735b480c07.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', Arial, sans-serif;
+      background: #0d1b2a;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    #tsparticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    #portfolio {
+      width: 794px; /* A4 width en px */
+      max-width: 100%;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: white;
+      padding: 8px;
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      z-index: 2;
+    }
+
+    header h1 {
+      margin: 10px 0 5px;
+      font-size: 2.2em;
+    }
+
+    header p {
+      margin: 5px 0;
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    nav {
+      background: rgba(0,51,124,0.9);
+      color: white;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    section {
+      background: rgba(255,255,255,0.95);
+      margin: 40px auto;
+      padding: 40px;
+      max-width: 900px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      color: #222;
+      z-index: 2;
+      position: relative;
+      page-break-inside: avoid;
+    }
+
+    h2 {
+      color: #004aad;
+      border-left: 6px solid #ffcc00;
+      padding-left: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      padding: 8px 0;
+      line-height: 1.6;
+    }
+
+    .download-btn {
+      display: block;
+      margin: 40px auto;
+      background: #ffcc00;
+      color: #00337c;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1em;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      z-index: 2;
+      position: relative;
+    }
+
+    .download-btn:hover {
+      background: #ffe066;
+    }
+
+    footer {
+      background: rgba(0,51,124,0.9);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      z-index: 2;
+      position: relative;
+    }
+
+    @media (max-width: 700px) {
+      header img {
+        position: static;
+        margin-bottom: 15px;
+      }
+      header {
+        padding: 80px 20px;
+      }
+      section {
+        margin: 20px;
+        padding: 25px;
+      }
+    }
+
+    
+    @keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  background: linear-gradient(-45deg, #74ABE2, #5563DE, #8E54E9, #4776E6);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+  </style>
 </head>
-<body>
-  <header>
-    <div class="header-left">
-      <img class="logo" src="https://i.ibb.co/27xRzqTQ/logo.png" alt="Logo Gi.Code">
-      <div class="title">
-        <h1>Portfolio de Mansour Gueye</h1>
-        <p>Gi.Code Formation — Bureautique & Développement & Sécurité Web,</p>
-        <p>📍 Dakar, Sénégal • 💼 Spécialiste en <strong>Word</strong>, <strong>Excel</strong>, <strong>PowerPoint</strong>, HTML, CSS, JavaScript et Python</p>
-      <p>🎯 Passionné par l’éducation numérique et la <strong>formation interactive</strong></p>
-      </div>
-    </div>
+<body id="portfolio">
 
-    <nav>
-      <a href="#profil">Profil</a>
-      <a href="#competences">Compétences</a>
-      <a href="#commandes">Commandes</a>
-      <a href="#contact">Contact</a>
-      <button id="pdfButton">📄 Télécharger en PDF</button>
-    </nav>
+  <div id="tsparticles"></div>
+
+  <header>
+    <img src="https://i.ibb.co/27xRzqTQ/logo.png" alt="Logo Gi.Code">
+    <h1>Portfolio de Mansour Gueye</h1>
+    <p>Gi.Code Formation — Bureautique • Développement • Sécurité Web</p>
+    <p>📍 Dakar, Sénégal • 💼 Spécialiste en Word, Excel, PowerPoint, HTML, CSS, JavaScript et Python</p>
+    <p>🎯 Passionné par l’éducation numérique et la formation interactive</p>
   </header>
 
-  <main>
-    <div class="grid">
-      <!-- LEFT: main content -->
+  <nav>
+    <a href="#profil">Profil</a>
+    <a href="#competences">Compétences</a>
+    <a href="#parcours">Parcours</a>
+    <a href="#projets">Projets</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="profil">
+    <h2><i class="fa-solid fa-user icon"></i> Profil</h2>
+    <p><strong>Mansour Gueye</strong> — Enseignant de français et d’anglais au primaire, responsable syndical et formateur numérique passionné par l’innovation pédagogique.</p>
+    <p>Je conçois des outils éducatifs, des applications et des plateformes en ligne pour rendre l’apprentissage plus interactif et accessible.</p>
+  </section>
+
+  <section id="parcours">
+    <h2><i class="fa-solid fa-graduation-cap icon"></i> Parcours & Certifications</h2>
+    <ul>
+      <li>🎓 CAP (2013) • CEAP (2006) • BAC (1999) • BFEM (1996)</li>
+      <li>🧩 GOMYCODE : Bureautique (certifié 02/03/2025) <a href="Mansour  GUEYE-Formation bureautique Certificate of Completion (6).pdf" class=btn-secondaire>📥 Diplome BUREAUTIQUE</a></li>
+      <li>💻 Bases du Web (certifié 27/05/2025) <a href="Mansour  GUEYE-Web Development Essentials Certificate of Completion (5).pdf" class=btn-secondaire>📥 Diplome Dev. WEB</a></li>
+      <li>🤝 Participation à projets : lutte contre les violences de genre et gestion de crises scolaires</li>
+    </ul>
+  </section>
+
+  <section id="competences">
+    <h2><i class="fa-solid fa-gears icon"></i> Compétences techniques</h2>
+    <ul>
+      <li>🌐 Développement Web : HTML, CSS, JavaScript, Node.js, Express, Flask, Electron</li>
+      <li>🐍 Python & Automatisation : ReportLab, Pillow, PyInstaller, automatisation administrative</li>
+      <li>⚙️ Systèmes & Réseaux : XAMPP, MySQL, diagnostic réseau, PowerShell / CMD</li>
+      <li>📦 Git & Déploiement : GitHub, Netlify, SSH, branches et bonnes pratiques</li>
+      <li>🔐 Sécurité & Outils : Obfuscation JS, permissions Windows, politiques d’exécution</li>
+      <li>💼 Bureautique & Formation : Word, Excel, PowerPoint, création de formulaires, PDF automatisés</li>
       <div>
-        <section id="profil" class="card">
-          <div class="profile-header">
-            <!-- Photo: place your photo in same folder and name it photo.jpg -->
-            <img src="photo.jpg" alt="Photo Mansour Gueye" class="photo" onerror="this.style.display='none'">
-            <div class="profile-info">
-              <h2>Mansour Gueye</h2>
-              <p><strong>Fonction :</strong> Enseignant (Français & Anglais) — Responsable syndical</p>
-              <p><strong>Localisation :</strong> Dakar, Sénégal</p>
-             
-            </div>
-          </div>
-
-          <div style="margin-top:14px">
-            <div class="section-title">🎓 Parcours & Certifications</div>
-            <div>
-            <ul class="small-list">
-              <li><strong>Diplômes Académiques :</strong> CAP (2013) • CEAP (2006) • BAC (1999) • BFEM (1996)</li>
-              <li><strong>Formations GOMYCODE :</strong> Bureautique (certifié 02/03/2025) <li><a href="Mansour  GUEYE-Formation bureautique Certificate of Completion (6).pdf" class=btn-secondaire>📥 Diplome BUREAUTIQUE</a></li> Bases du Web (certifié 27/05/2025) <li><a href="Mansour  GUEYE-Web Development Essentials Certificate of Completion (5).pdf" class=btn-secondaire>📥 Diplome Dev. WEB</a></li></li>
-              </div>
-            
-              <li>Participation à projets : lutte contre les Violences Genre en milieu scolaire, Gestion de crises en milieu scolaires.</li>
-              
-            </ul>
-          </div>
-        </section>
-
-        <section id="competences" class="card" style="margin-top:20px;">
-          <h3 style="color:var(--accent); margin:0 0 12px;">💻 Mes Compétences Techniques</h3>
-
-          <div class="competences-grid">
-            <div class="skill">
-              <h4>🌐 Développement Web</h4>
-              <ul>
-                <li>HTML, CSS, JavaScript — Sites responsives</li>
-                <li>Node.js & Express — Serveurs et API</li>
-                <li>Electron — Packaging d'applications desktop</li>
-              </ul>
-            </div>
-
-            <div class="skill">
-              <h4>🐍 Python & Automatisation</h4>
-              <ul>
-                <li>Flask (web), ReportLab (PDF), Pillow (images)</li>
-                <li>PyInstaller — création d'exécutables .exe</li>
-                <li>Scripting pour automatisation administrative</li>
-              </ul>
-            </div>
-
-            <div class="skill">
-              <h4>⚙️ Systèmes & Réseaux</h4>
-              <ul>
-                <li>XAMPP, MySQL, phpMyAdmin</li>
-                <li>Diagnostic réseau : ipconfig, gestion ports (3306, 8000…)</li>
-                <li>PowerShell / CMD — gestion des processus</li>
-              </ul>
-            </div>
-
-            <div class="skill">
-              <h4>📦 Git & Déploiement</h4>
-              <ul>
-                <li>git init / add / commit / push / branches</li>
-                <li>SSH (ssh-keygen), GitHub, Netlify</li>
-                <li>Configurations : git postBuffer et bonnes pratiques</li>
-              </ul>
-            </div>
-
-            <div class="skill">
-              <h4>🔐 Sécurité & Outils</h4>
-              <ul>
-                <li>Set-ExecutionPolicy, gestion permissions</li>
-                <li>Obfuscation JS (javascript-obfuscator)</li>
-                <li>Bonnes pratiques pour production locale</li>
-              </ul>
-            </div>
-
-            <div class="skill">
-              <h4>💼 Bureautique & Formation</h4>
-              <ul>
-                <li>Word, Excel, PowerPoint — formation & accompagnement</li>
-                <li>Création de formulaires, automatisation et PDF</li>
-                <li>Conception de contenus pédagogiques</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section id="competences" style="background-color:#fff7f8; color:#3e2723; padding:40px 20px; font-family:'Poppins',sans-serif;">
-  <div style="max-width:1000px; margin:auto; text-align:center;">
-    <img src="https://i.ibb.co/27xRzqTQ/logo.png" alt="Logo Gi.Code Formation" style="width:90px; margin-bottom:20px;">
-    <h2 style="font-size:2em; color:#5d4037; margin-bottom:30px;">💻 Mes Compétences en Informatique</h2>
-
-    <div style="text-align:left; background:#fff; border-radius:15px; padding:25px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-      <h3 style="color:#6d4c41;">🌐 Développement Web</h3>
-      <ul>
-        <li>Création de sites web responsives avec <strong>HTML, CSS et JavaScript</strong></li>
-        <li>Déploiement d’applications web via <strong>Flask (Python)</strong> et <strong>Express (Node.js)</strong></li>
-        <li>Configuration de serveurs locaux (localhost, ports 3000 / 5000 / 8000)</li>
-        <li>Utilisation d’outils modernes : <strong>npm, nodemon, GitHub</strong></li>
-      </ul>
-
-      <h3 style="color:#6d4c41;">⚙️ Programmation & Automatisation</h3>
-      <ul>
-        <li>Scripts Python avec <strong>ReportLab</strong> et <strong>Pillow</strong> (PDF, images)</li>
-        <li>Création d’exécutables Windows avec <strong>PyInstaller</strong> et <strong>Electron</strong></li>
-        <li>Manipulation du terminal (CMD, PowerShell, Bash) et politiques d’exécution</li>
-      </ul>
-
-      <h3 style="color:#6d4c41;">🧠 Sécurité & Configuration Système</h3>
-      <ul>
-        <li>Identification d’adresses IP et gestion des ports (ipconfig, Get-Process, Stop-Process)</li>
-        <li>Configuration de <strong>MySQL</strong> et <strong>XAMPP</strong></li>
-        <li>Utilisation de <strong>JavaScript Obfuscator</strong> pour la minification et la protection de code</li>
-      </ul>
-
-      <h3 style="color:#6d4c41;">🗂️ Gestion de Version & Collaboration</h3>
-      <ul>
-        <li>Initialisation et gestion de projets avec <strong>Git / GitHub</strong></li>
-        <li>Utilisation de clés SSH et commandes Git avancées</li>
-        <li>Bonne pratique du versionnage et du travail collaboratif</li>
-      </ul>
-
-      <h3 style="color:#6d4c41;">💼 Bureautique & Transformation Numérique</h3>
-      <ul>
-        <li>Maîtrise avancée de <strong>Word, Excel, PowerPoint</strong></li>
-        <li>Automatisation administrative et création de formulaires interactifs</li>
-        <li>Formation et accompagnement à la transition numérique</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-
+        <li><a href="Mes_Competences_GiCode.pdf">Mes commandes techniques</a></li>
       </div>
+    </ul>
+  </section>
 
-      <!-- RIGHT: aside -->
-      <aside>
-        <div class="card contact">
-          <h4 style="color:var(--accent); margin:0 0 8px;">📞 Contact</h4>
-          <p><strong>Email :</strong> <a href="mailto:gmansour1977@gmail.com">gmansour1977@gmail.com</a></p>
-          <p><strong>Téléphone :</strong> 77 681 37 49</p>
-          <p><strong>Site :</strong> <a href="https://g-mansour1977.github.io/HOME-Gi.-Code-Bureautique-et-Developpement-WEB/" target="_blank">Gi.Code Formation</a></p>
-          <p style="margin-top:8px; font-size:13px; color:var(--muted-2)">Disponible pour missions freelance, formation et accompagnement.</p>
-        </div>
+  <section id="projets">
+    <h2><i class="fa-solid fa-diagram-project icon"></i> Mes projets HTML & Python</h2>
+    <ul>
+      <li><a href="https://g-mansour1977.github.io/">Github</a></li>
+      <li><a href="https://g-mansour1977.github.io/Gestion_Notes-Multi-Mati-res-9/">📘 Gestion Notes Primaire - Élémentaire - Lycée</a></li>
+      <li><a href="https://g-mansour1977.github.io/Mod-le-de-Proposition-de-Passage/">📄 Modèle de Proposition de Passage</a></li>
+      <li><a href="https://g-mansour1977.github.io/HOME-Gi.-Code-Bureautique-et-Developpement-WEB/">🌐 Mon Site de Formation</a></li>
+      <li><a href="https://g-mansour1977.github.io/Evaluation-Gi.-Code/">🧩 Évaluation Bureautique (Word 1 & 2)</a></li>
+      <li><a href="https://g-mansour1977.github.io/Evaluation-BUREAUTIQUE/">📝 Évaluation WORD</a></li>
+      <li><a href="https://gicode-flyer-bureautiqu.netlify.app/">🗂️ Formulaire d'inscription à Gi.Code Formation</a></li>
+      <li><a href="https://g-mansour1977.github.io/Animation-English/">🎲 Cube 3D - Animation Éducation</a></li>
+      <li><a href="https://renseignement-tresorsmdie-2025-2026.netlify.app/">🗂️ Plateforme de Renseignement</a></li>
+      <li><a href="https://inscription-tresormamandie-2025-2026.netlify.app/">🗂️ Plateforme d'Inscription</a></li>
+    </ul>
+  </section>
 
-        <div class="card" style="text-align:center;">
-          <h4 style="color:var(--accent); margin-bottom:8px;">🏆 Points forts</h4>
-          <p style="color:var(--muted-2); font-size:14px">Polyvalent • Enseignant • Certifié Gomycode • Packaging d'apps • Automatisation</p>
-        </div>
+  <section id="contact">
+    <h2><i class="fa-solid fa-envelope icon"></i> Contact</h2>
+    <p>📧 <strong>Email :</strong> <a href="mailto:gmansour1977@gmail.com">gmansour1977@gmail.com</a></p>
+    <p>📞 <strong>Téléphone :</strong> 77 681 37 49</p>
+    <p>🌍 <strong>Site :</strong> <a href="https://g-mansour1977.github.io/HOME-Gi.-Code-Bureautique-et-Developpement-WEB/">Gi.Code Formation</a></p>
+    <p>💼 Disponible pour missions freelance, formations & accompagnements numériques.</p>
+  </section>
 
-        <div class="card" style="text-align:center;">
-          <h4 style="color:var(--accent); margin-bottom:8px;">📌 Disponibilité</h4>
-          <p style="color:var(--muted-2); font-size:14px">Ouvert à collaborations, formations & projets numériques.</p>
-        </div>
-
-        <div class="card" style="text-align:center;">
-          <h4 style="color:var(--accent); margin-bottom:8px;">📌 Mes Projets Html et Python</h4>
-          <p style="color:var(--muted-2); font-size:14px"><a href="https://g-mansour1977.github.io/Gestion_Notes-Multi-Mati-res-9/">Gestion Notes Primaire-Elémentaire-Lycée</a></p>
-          <p style="color:var(--muted-2); font-size:14px"><a href="https://g-mansour1977.github.io/Mod-le-de-Proposition-de-Passage/">Modéle de Proposition de Passage</a></p>
-          <p style="color:var(--muted-2); font-size:14px"><a href="https://g-mansour1977.github.io/HOME-Gi.-Code-Bureautique-et-Developpement-WEB/">Mon Site de Formation</a></p>
-          <p style="color:var(--muted-2); font-size:14px"><a href="https://g-mansour1977.github.io/Evaluation-Gi.-Code/">Evaluation Bureautique-WORD 1</a></p>
-          <p style="color:var(--muted-2); font-size:14px"><a href="https://g-mansour1977.github.io/Evaluation-BUREAUTIQUE/">Evaluation Bureautique-WORD 2</a></p>
-          <p style="color:var(--muted-2); font-size:14px"><a href="https://gicode-flyer-bureautiqu.netlify.app/">Mon Formulaire d'inscription a Gi. Code</a></p>
-          <p style="color:var(--muted-2); font-size:14px"><a href="https://g-mansour1977.github.io/Animation-English/">Cube3D- English Animation</a></p>
-          <p style="color:var(--muted-2); font-size:14px"><a href="https://renseignement-tresorsmdie-2025-2026.netlify.app/">Plateforme de Renseignement</a></p>
-          <p style="color:var(--muted-2); font-size:14px"><a href="https://inscription-tresormamandie-2025-2026.netlify.app/">Plateforme d'inscription</a></p>
-        </div>
-      </aside>
-    </div>
-  </main>
-
-
-
-   <section id="contact" class="card">
-      <h2>📞 Contact</h2>
-      <p><strong>Email :</strong> <a href="mailto:gmansour1977@gmail.com">gmansour1977@gmail.com</a></p>
-      <p><strong>Téléphone :</strong> 77 681 37 49</p>
-      <p><strong>Site web :</strong> <a href="https://g-mansour1977.github.io/HOME-Gi.-Code-Bureautique-et-Developpement-WEB/" target="_blank">Visiter Gi.Code Formation</a></p>
-    </section>
-  
+  <button class="download-btn" onclick="telechargerPDF()">📄 Télécharger en PDF</button>
 
   <footer>
-    <p>&copy; 2025 Mansour Gueye — Gi.Code Formation. Tous droits réservés.</p>
+    © 2025 Mansour Gueye — Gi.Code Formation | Enseignant & Formateur Numérique
   </footer>
 
   <script>
-    // PDF / impression
-    document.getElementById('pdfButton').addEventListener('click', () => {
-      window.print();
-    });
+    function telechargerPDF() {
+      const portfolio = document.getElementById('portfolio');
+      const particles = document.getElementById('tsparticles');
+      const nav = document.querySelector('nav');
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', function(e){
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+      particles.style.display = 'none';
+      nav.style.position = 'static';
+
+      const opt = {
+        margin: 0.3,
+        filename: 'Portfolio_Mansour_Gueye_GiCode.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+      };
+
+      html2pdf().set(opt).from(portfolio).save().then(() => {
+        particles.style.display = 'block';
+        nav.style.position = 'sticky';
       });
+    }
+
+    tsParticles.load("tsparticles", {
+      fpsLimit: 60,
+      background: { color: "#0d1b2a" },
+      particles: {
+        number: { value: 80, density: { enable: true, area: 800 } },
+        color: { value: "#ffcc00" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: { min: 2, max: 5 } },
+        move: { enable: true, speed: 1.5, direction: "none", outModes: "bounce" },
+        links: { enable: true, distance: 120, color: "#ffffff", opacity: 0.3, width: 1 }
+      },
+      interactivity: {
+        events: { onHover: { enable: true, mode: "grab" }, onClick: { enable: true, mode: "push" } },
+        modes: { grab: { distance: 140, links: { opacity: 0.5 } }, push: { quantity: 4 } }
+      },
+      detectRetina: true
     });
   </script>
 </body>
